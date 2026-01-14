@@ -1,0 +1,14 @@
+# Ignore dependencies (Files that can be re-installed)
+node_modules
+client/node_modules
+
+# Ignore Build outputs
+client/dist
+client/build
+
+# Ignore Secrets (VERY IMPORTANT)
+.env
+client/.env
+
+# Misc
+.DS_Store
