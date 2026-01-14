@@ -24,7 +24,7 @@ const ScrollableChat = ({ messages, setMessages }) => {
         },
       };
 
-      await axios.delete(`http://127.0.0.1:8000/api/message/${id}`, config);
+      await axios.delete(`/api/message/${id}`, config);
 
       setMessages(messages.filter((m) => m._id !== id));
 

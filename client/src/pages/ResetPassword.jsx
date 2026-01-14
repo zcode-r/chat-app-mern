@@ -33,7 +33,7 @@ const ResetPassword = () => {
       };
 
       // Ensure this URL matches your backend port (usually 8000 or 5000)
-      await axios.put(`http://127.0.0.1:8000/api/user/resetpassword/${token}`, { password }, config);
+      await axios.put(`/api/user/resetpassword/${token}`, { password }, config);
 
       toast({
         title: "Password Reset Successful",

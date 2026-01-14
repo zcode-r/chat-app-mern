@@ -5,7 +5,8 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { createServer } from "http";
-import { Server } from "socket.io";  
+import { Server } from "socket.io"; 
+import path from "path";
 
 import connectDB from "./config/db.js";
 import userroute from "./routes/user.route.js";
@@ -18,18 +19,28 @@ connectDB();
 const app = express();
 
 app.use(express.json());
-app.use(cors({
-    origin: "http://localhost:3000",
-    credentials: true
-}));
 
-app.get("/", (req, res) => {
-  res.send("Chat App Backend is Running!");
-});
+app.use(cors()); 
 
 app.use("/api/user", userroute);
 app.use("/api/chat", chatroute);
 app.use("/api/message", messageroute);
+
+
+const __dirname1 = path.resolve();
+if (process.env.NODE_ENV === "production") {
+
+  app.use(express.static(path.join(__dirname1, "/client/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname1, "client", "dist", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is Running Successfully");
+  });
+}
+
 
 const httpServer = createServer(app);
 
@@ -38,7 +49,7 @@ const PORT = process.env.PORT || 5000;
 const io = new Server(httpServer, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*", 
   },
 });
 
