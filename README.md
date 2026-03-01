@@ -9,15 +9,6 @@ This project focuses on a strong backend architecture for real-time communicatio
 
 ---
 
-## 🚀 Live Demo
-
-👉 **[View the Live Application](https://chat-app-mern-d1ey.onrender.com)**
-
-> ⚠️ *Note:* Hosted on a free tier.  
-> Initial load may take **30–60 seconds** due to server cold start.
-
----
-
 ## 👨‍💻 Development Approach
 
 This project follows a **hybrid development methodology**:
